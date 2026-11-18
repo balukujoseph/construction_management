@@ -1,0 +1,90 @@
+{% extends 'cooladmin_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    <div class="page-container">
+        {% include "messages.html" %}
+
+    <section>
+            
+        <header class="top-header">
+
+                <nav class="top-nav">
+                    <a href="https://wa.me/256741355953">WhatsApp</a>
+                    <a href="mailto:hidayananteza89@gmail.com">Email</a>
+                    <a href="tel:+256741355953">Phone</a>
+                </nav>
+
+            </header>
+
+
+        <div class="container">
+            <h1>WELCOME TO CONSTRUCTION MANAGEMENT</h1>
+           
+
+            <nav>
+                
+
+
+<a href="{% url 'add_client_page' %}">Clients</a>
+<a href="{% url 'add_project_page' %}">Projects</a>
+<a href="{% url 'add_task_page' %}">Tasks</a>
+<a href="{% url 'add_employee_page' %}">Employees</a>
+<a href="{% url 'add_material_page' %}">Materials</a>
+<a href="{% url 'add_equipment_page' %}">Equipment</a>
+<a href="{% url 'add_activity_page' %}">Activities</a>
+            </nav>
+            
+        </div>
+
+
+            <hr>
+            <br>
+
+            <p>We are a leading construction management company dedicated to delivering high-quality projects on time and within budget. Our team of experienced professionals is committed to providing exceptional service and innovative solutions for all your construction needs.</p>
+
+            
+
+            <p>Explore our website to learn more about our services, view our portfolio of completed projects, and get in touch with us to discuss how we can help bring your construction vision to life.</p>
+
+            
+
+            <p>Thank you for choosing our Construction Management company. We look forward to working with you!</p>
+        <br>
+        
+        <div class="footer">
+            <P>Get In Touch</P>
+            <p>Email:constractionmgnt256@gmail.com</p>
+            <p>Phone: +256741355953</p>
+            <p>&copy; 2026 Construction Management. All rights reserved.</p>
+        </div>
+    </section>
+
+
+    
+    <dialog id="contactDialog">
+
+        <div class="contactSection">
+
+            <h2>Send Me a Message</h2>
+
+            <form id="contactForm" method="post">
+                {% csrf_token %}
+                {{ contact_form|crispy }}
+
+                <br><br>
+
+                <button class="btn btn-primary" type="submit">Send Message</button>
+
+                <button class="btn btn-danger" type="button" onclick="closeDialog()">
+                    Close
+                </button>
+
+            </form>
+
+        </div>
+
+    </dialog>
+
+
+{% endblock %}

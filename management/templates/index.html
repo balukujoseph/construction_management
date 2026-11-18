@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Login - Construction Management{% endblock %}
+{% block content %}
+    <div class="page-container">
+        {% include "messages.html" %}
+        <div class="login-page">
+            <section class="login-box">
+               <br><br>
+                <h1>Construction Management</h1>
+                <p>Sign in to continue</p>
+
+                <form id="loginForm" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                <br><br>
+                    <button type="submit" class="btn btn-primary">LOG IN</button>
+                </form>
+                <br>
+                <p>Need an account? <a href="{% url 'sign_up_page' %}">Sign up</a></p>
+            </section>
+        </div>
+    </div>
+{% endblock %}

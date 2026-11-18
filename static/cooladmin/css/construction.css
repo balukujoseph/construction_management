@@ -1,0 +1,138 @@
+/* Construction Management System — page presentation refinements */
+:root {
+  --cms-primary: #315f9f;
+  --cms-primary-dark: #244b80;
+  --cms-ink: #202b3c;
+  --cms-muted: #718096;
+  --cms-border: #e5eaf1;
+  --cms-surface: #ffffff;
+  --cms-page: #f4f7fb;
+}
+html, body { min-height: 100%; }
+body.app { background: var(--cms-page); color: var(--cms-ink); }
+body.app .page-wrapper { background: var(--cms-page); }
+body.app .page-container { background: transparent; }
+body.app .main-content { padding-top: 88px; }
+body.app .main-content > .section__content { padding-top: 22px; padding-bottom: 40px; }
+body.app .main-content .page-container { padding-left: 0; background: transparent; }
+body.app .page-container > section,
+body.app .content-card,
+body.app .admin-dashboard-card,
+body.app .login-box {
+  background: var(--cms-surface);
+  border: 1px solid var(--cms-border);
+  border-radius: 14px;
+  box-shadow: 0 5px 22px rgba(31, 50, 81, .055);
+}
+body.app .page-container > section { padding: 24px; margin-bottom: 24px; }
+body.app h1, body.app h2, body.app h3 { color: var(--cms-ink); }
+body.app .heading { margin-bottom: 18px; }
+body.app .heading h2, body.app .page-header h1,
+body.app .admin-dashboard-header h1 { font-size: clamp(1.35rem, 2vw, 1.8rem); font-weight: 700; }
+body.app .page-header { margin-bottom: 22px; }
+body.app .subtitle, body.app .page-header p { color: var(--cms-muted); }
+body.app form .form-label, body.app form label { font-weight: 600; color: #39465a; }
+body.app form .form-control, body.app form .form-select,
+body.app form input, body.app form select, body.app form textarea {
+  border: 1px solid #dce3ed;
+  border-radius: 8px;
+  min-height: 42px;
+  box-shadow: none;
+}
+body.app form textarea { min-height: 105px; }
+body.app form .form-control:focus, body.app form .form-select:focus,
+body.app form input:focus, body.app form select:focus, body.app form textarea:focus {
+  border-color: var(--cms-primary);
+  box-shadow: 0 0 0 3px rgba(49,95,159,.12);
+}
+body.app .btn { border-radius: 8px; font-weight: 600; padding: .55rem .95rem; }
+body.app .btn-primary { background: var(--cms-primary); border-color: var(--cms-primary); }
+body.app .btn-primary:hover { background: var(--cms-primary-dark); border-color: var(--cms-primary-dark); }
+body.app .table-responsive { border: 1px solid var(--cms-border); border-radius: 10px; background: white; }
+body.app .table { margin-bottom: 0; vertical-align: middle; }
+body.app .table thead th { background: #edf2f8; color: #34445b; border-bottom: 1px solid var(--cms-border); font-size: .82rem; text-transform: uppercase; letter-spacing: .035em; white-space: nowrap; }
+body.app .table td { color: #435066; padding: .8rem .75rem; }
+body.app .table tbody tr:hover { background: #f7faff; }
+body.app .table-actions { white-space: nowrap; }
+body.app .table-actions .btn { margin: 2px; }
+body.app .admin-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+body.app .admin-dashboard-card { padding: 22px; }
+body.app .admin-dashboard-card h2 { font-size: 1rem; }
+body.app .admin-dashboard-count { font-size: 2rem; font-weight: 700; color: var(--cms-primary); margin: 10px 0; }
+body.app .admin-dashboard-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+body.app .footer { color: var(--cms-muted); text-align: center; padding: 22px 10px; font-size: .9rem; }
+body.app .alert { border-radius: 9px; }
+body.app .menu-sidebar { box-shadow: 4px 0 20px rgba(20,35,55,.08); }
+body.app .header-desktop { box-shadow: 0 2px 12px rgba(20,35,55,.04); }
+@media (max-width: 991.98px) {
+  body.app .main-content { padding-top: 40px; }
+  body.app .main-content > .section__content { padding-left: 14px; padding-right: 14px; }
+  body.app .page-container > section { padding: 18px; }
+}
+
+
+/* Compact vertical spacing and consistent control alignment */
+body.app .main-content { padding-top: 58px; }
+body.app .main-content > .section__content {
+  padding-top: 12px;
+  padding-bottom: 24px;
+}
+body.app .page-header { margin-bottom: 14px; }
+body.app .heading { margin-bottom: 12px; }
+body.app .page-container > section {
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+/* Keep form controls evenly spaced */
+body.app form .mb-3,
+body.app form .form-group,
+body.app form .form-row,
+body.app form .row {
+  margin-bottom: 12px;
+}
+body.app form .form-label,
+body.app form label {
+  display: block;
+  margin-bottom: 5px;
+}
+body.app form .form-control,
+body.app form .form-select,
+body.app form input,
+body.app form select,
+body.app form textarea {
+  min-height: 38px;
+  padding: 7px 11px;
+  margin-bottom: 0;
+}
+body.app form textarea { min-height: 88px; }
+
+/* Align buttons in a neat row with equal gaps */
+body.app form .button-container,
+body.app form .form-actions,
+body.app form .d-flex,
+body.app .button-container,
+body.app .form-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+body.app form button,
+body.app form .btn,
+body.app .button-container .btn,
+body.app .form-actions .btn {
+  min-height: 36px;
+  padding: 7px 13px;
+  margin: 0;
+}
+body.app .table td { padding-top: .62rem; padding-bottom: .62rem; }
+
+@media (max-width: 991.98px) {
+  body.app .main-content { padding-top: 28px; }
+  body.app .main-content > .section__content {
+    padding-top: 8px;
+    padding-bottom: 18px;
+  }
+  body.app .page-container > section { padding: 14px; }
+}

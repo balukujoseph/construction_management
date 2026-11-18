@@ -1,0 +1,29 @@
+{% extends 'cooladmin_base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block body_class %}app{% endblock %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="page-container admin-dashboard">
+        {% include "messages.html" %}
+        <div class="admin-dashboard-header">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Overview of your construction management records.</p>
+            </div>
+            <a class="btn btn-primary" href="{% url 'admin:index' %}">Open Django Admin</a>
+        </div>
+
+        <div class="admin-dashboard-grid">
+            {% for item in dashboard_items %}
+                <article class="admin-dashboard-card">
+                    <h2>{{ item.label }}</h2>
+                    <p class="admin-dashboard-count">{{ item.count }}</p>
+                    <a href="{{ item.url }}">Manage {{ item.label }}</a>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

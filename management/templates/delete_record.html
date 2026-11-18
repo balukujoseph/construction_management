@@ -1,0 +1,17 @@
+{% extends 'cooladmin_base.html' %}
+{% block title %}Delete {{ record_label }}{% endblock %}
+{% block content %}
+    {% include 'messages.html' %}
+    <main class="page-container">
+        <h1>Delete {{ record_label }}</h1>
+        <p>Are you sure you want to delete "{{ record }}"?</p>
+        {% if delete_warning %}
+            <p class="alert alert-warning">{{ delete_warning }}</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a class="btn btn-danger" href="{% url list_url %}">Cancel</a>
+        </form>
+    </main>
+{% endblock %}

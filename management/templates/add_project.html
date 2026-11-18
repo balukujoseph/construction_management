@@ -1,0 +1,68 @@
+{% extends 'cooladmin_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Project{% endblock %}
+{% block content %}
+    <div class="page-container">
+        {% include "messages.html" %}
+
+    <section>
+        
+            <div class="heading">
+                <h2>PROJECT</h2>
+            </div>
+
+            <br><br>
+        
+            
+    <form method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <div class="button-container">
+            <button type="submit" class="btn btn-primary">ADD PROJECT </button>
+        </div>
+    </form>
+    
+    </section>
+
+    <section>
+        <h2>Project List</h2>
+        <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Project ID</th>
+                    <th scope="col">Project Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                    <tr>
+                        <td>{{ project.id }}</td>
+                        <td>{{ project.name }}</td>
+                        <td>{{ project.description }}</td>
+                        <td>{{ project.start_date }}</td>
+                        <td>{{ project.end_date }}</td>
+                        <td class="table-actions">
+                            <a class="btn btn-sm btn-warning" href="{% url 'edit_record' 'project' project.id %}">EDIT</a>
+                            <a class="btn btn-sm btn-danger" href="{% url 'delete_record' 'project' project.id %}">DELETE</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </section>
+    
+    <div class="footer">
+        <p>&copy; 2026 Construction Management. All rights reserved.</p>
+    </div>
+
+
+
+    </div>
+{% endblock %}

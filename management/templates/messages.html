@@ -1,0 +1,17 @@
+{% if msg %}
+    <div class="messages" role="status" aria-live="polite">
+        {% for message in msg %}
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+        {% endfor %}
+    </div>
+    <script>
+        document.querySelectorAll('.messages .alert').forEach(function (message) {
+            window.setTimeout(function () {
+                message.classList.add('message-dismissed');
+                window.setTimeout(function () {
+                    message.remove();
+                }, 400);
+            }, 5000);
+        });
+    </script>
+{% endif %}

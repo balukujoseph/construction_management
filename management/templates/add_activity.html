@@ -1,0 +1,82 @@
+{% extends 'cooladmin_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Activity{% endblock %}
+{% block content %}
+    <div class="page-container">
+        {% include "messages.html" %}
+    
+                
+            <div class="heading">
+                <h2>ACTIVITY</h2>
+            </div>
+            <hr>
+        
+        </section>
+        <div class="form-container">
+            <form method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+
+                <div class="button-container">
+                    <button type="submit" class="btn btn-primary">ADD ACTIVITY </button>
+                    
+                    <br>
+                
+            </form>
+                
+        </div>
+    
+    </div>
+
+
+
+       <hr>
+        
+        <br><br>
+        
+
+
+   
+
+    
+        <h2>Activity List</h2>
+        <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">NO.</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">DESCRIPTION</th>
+                    <th scope="col">START DATE</th>
+                    <th scope="col">END DATE</th>
+                    <th scope="col">PROJECT</th>
+                    <th scope="col">ACTIONS</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for activity in activities %}
+                    <tr>
+                        <td>{{ activity.id }}</td>
+                        <td>{{ activity.name }}</td>
+                        <td>{{ activity.description }}</td>
+                        <td>{{ activity.start_date }}</td>
+                        <td>{{ activity.end_date }}</td>
+                        <td>{{ activity.project.name }}</td>
+                        <td class="table-actions">
+                            <a class="btn btn-sm btn-warning" href="{% url 'edit_record' 'activity' activity.id %}">EDIT</a>
+                            <a class="btn btn-sm btn-danger" href="{% url 'delete_record' 'activity' activity.id %}">DELETE</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Construction Management. All rights reserved.</p>
+    </div>
+
+    
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'cooladmin_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Edit {{ record_label }}{% endblock %}
+{% block content %}
+    {% include 'messages.html' %}
+    <div class="page-header">
+        <div>
+            <h1>Edit {{ record_label }}</h1>
+            <p class="subtitle">Update the details for {{ record }}.</p>
+        </div>
+        <a class="btn btn-outline-secondary" href="{% url list_url %}">
+            <i class="fa-solid fa-arrow-left me-1" aria-hidden="true"></i>
+            Back to {{ record_label }} list
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-xl-8">
+            <section class="card" aria-labelledby="record-edit-form-title">
+                <div class="card-header">
+                    <strong id="record-edit-form-title">Record details</strong>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-muted">Make your changes below, then save to update this record.</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-flex flex-wrap gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-floppy-disk me-1" aria-hidden="true"></i>
+                                Save Changes
+                            </button>
+                            <a class="btn btn-outline-secondary" href="{% url list_url %}">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}
